@@ -3,6 +3,7 @@
 
 	import Player from './Player.svelte';
 	import Game from './Game.svelte';
+	import Versus from './Versus.svelte';
 </script>
 
 <h1>Dashboard</h1>
@@ -18,3 +19,5 @@
 	</Player>
 	<br />
 {/each}
+
+<Versus/>
