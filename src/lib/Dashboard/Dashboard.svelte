@@ -8,12 +8,14 @@
 
 <h1>Dashboard</h1>
 
-{#each $playersStore.players as { name, experience, games }}
-	<Player {name} {experience}>
+{#each $playersStore.players as { name, experience, expPoints, games }}
+	<Player {name} {experience} {expPoints}>
 		{#each games as game}
 			<Game
 				{...game}
 				on:levelUp={playersStore.onLevelUp(name)}
+				on:addPoints={playersStore.onAddPoints(name, expPoints)} 
+				bind:expPoints={expPoints}
 			/>
 		{/each}
 	</Player>

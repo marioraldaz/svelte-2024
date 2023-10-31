@@ -2,9 +2,10 @@
 	import Button from './Button.svelte';
 	import { createEventDispatcher } from 'svelte';
 	export let inc = 1;
-	let points = 0;
+	export let points = 0;
+	export let expPoints;
 
-	const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher();	
 
 	$: {
 		if (points >= 10) {
@@ -15,6 +16,8 @@
 
 	function addPoints() {
 		points += inc;
+		expPoints += inc;
+		dispatch('onAddPoints');
 	}
 </script>
 

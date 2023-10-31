@@ -54,8 +54,55 @@ function onLevelUp(playerName) {
 	};
 }
 
+function onAddPoints(playerName,points) {
+	
+	return () => {
+		playersStore.update((data) => {
+			const playerIndex = data.players.findIndex((player)=>{
+				return player.name === playerName;
+			}
+			)
+			
+			data.players[playerIndex].expPoints = points;
+
+			return data;
+		})
+	}
+}
+
+function onAddPointsVS(playerName1,playerName2,increment1,increment2) {
+	
+	return () => {
+		playersStore.update((data) => {
+
+			const playerIndex1 = data.players.findIndex((player)=>{
+				return player.name === playerName1;
+			})
+			const playerIndex2 = data.players.findIndex((player)=>{
+				return player.name === playerName2;
+			})
+			
+			data.players[playerIndex1].expPoints += increment1;
+			data.players[playerIndex2].expPoints += increment2;
+
+			return data;
+		})
+	}
+}
+
+export function getPlayer(playerName) {
+	for(let i=0;i<players.length;i++){
+		if (players[i].name === playerName){
+			return players[i];
+		}
+	}
+}
+
+
 export default {
 	...playersStore,
 	updatePlayer,
-	onLevelUp
+	onLevelUp,
+	onAddPoints,
+	onAddPointsVS
 };

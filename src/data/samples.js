@@ -39,11 +39,13 @@ export const players = [
 	{
 		name: 'Pepe',
 		experience: 'newbie',
+		expPoints:0,
 		games: [games.chess, games.blackjack]
 	},
 	{
 		name: 'Lucas',
 		experience: 'expert',
+		expPoints:0,
 		games: [games.blackjack]
 	}
 ];
